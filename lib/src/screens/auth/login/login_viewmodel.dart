@@ -47,7 +47,7 @@ class LoginViewModel extends StateNotifier<LoginState> {
         );
         // ignore: use_build_context_synchronously
         Navigator.pushNamedAndRemoveUntil(
-            context, '/home', (Route<dynamic> route) => false);
+            context, '/dashboard', (Route<dynamic> route) => false);
       }
     } on FirebaseAuthException catch (e) {
       state = state.copyWith(loading: false);
