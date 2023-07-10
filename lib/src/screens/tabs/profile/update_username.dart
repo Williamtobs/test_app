@@ -16,7 +16,6 @@ class UpdateUserName extends ConsumerStatefulWidget {
 }
 
 class _UpdateUserNameState extends ConsumerState<UpdateUserName> {
-  // final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final TextEditingController _usernameController = TextEditingController();
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -25,7 +24,8 @@ class _UpdateUserNameState extends ConsumerState<UpdateUserName> {
       loading = true;
     });
     User currentUser = FirebaseAuth.instance.currentUser!;
-    await firestore.collection(currentUser.uid).doc('users').update({
+    print(currentUser.uid);
+    await firestore.collection('users').doc(currentUser.uid).update({
       'username': _usernameController.text,
     }).then((value) {
       ScaffoldMessenger.of(context).showSnackBar(

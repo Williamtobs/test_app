@@ -30,7 +30,12 @@ class Profile extends StatelessWidget {
                     const EachOption(title: 'Update Email', icon: Icons.email)),
             const SizedBox(height: 10),
             //update username
-            const EachOption(title: 'Update Username', icon: Icons.person),
+            InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/updateUserName');
+                },
+                child: const EachOption(
+                    title: 'Update Username', icon: Icons.person)),
             //logout
             const SizedBox(height: 10),
             InkWell(
