@@ -6,6 +6,7 @@ class AppTextField extends StatelessWidget {
   final TextEditingController controller;
   final bool? obscureText;
   final bool isPassword;
+  final String? Function(String?)? validator;
   final Function()? onTap;
   final Function(String)? onChanged;
   const AppTextField(
@@ -15,7 +16,8 @@ class AppTextField extends StatelessWidget {
       this.obscureText = false,
       this.onTap,
       this.isPassword = false,
-      this.onChanged});
+      this.onChanged,
+      this.validator});
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class AppTextField extends StatelessWidget {
       obscureText: obscureText!,
       style: Styles.w400(size: 14, color: const Color.fromRGBO(33, 31, 31, 1)),
       onChanged: onChanged,
+      validator: validator,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: Styles.w400(
