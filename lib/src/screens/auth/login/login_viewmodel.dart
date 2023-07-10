@@ -31,23 +31,10 @@ class LoginViewModel extends StateNotifier<LoginState> {
         );
         return;
       } else {
-        FirebaseFirestore firestore = FirebaseFirestore.instance;
-        DocumentSnapshot<Map<String, dynamic>> doc =
-            await firestore.collection('users').doc(user.uid).get();
-        state = state.copyWith(
-          loading: false,
-          user: Users.fromJson({
-            'email': doc.data()!['email'],
-            'phone': doc.data()!['phone'],
-            'interest': doc.data()!['interest'],
-            'username': doc.data()!['username'],
-            'name': doc.data()!['name'],
-            'id': doc.data()!['id'],
-          }),
-        );
+        await fetchDetails(user);
         // ignore: use_build_context_synchronously
         Navigator.pushNamedAndRemoveUntil(
-            context, '/home', (Route<dynamic> route) => false);
+            context, '/dashboard', (Route<dynamic> route) => false);
       }
     } on FirebaseAuthException catch (e) {
       state = state.copyWith(loading: false);
@@ -66,6 +53,23 @@ class LoginViewModel extends StateNotifier<LoginState> {
       );
       rethrow;
     }
+  }
+
+  fetchDetails(User user) async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot<Map<String, dynamic>> doc =
+        await firestore.collection('users').doc(user.uid).get();
+    state = state.copyWith(
+      loading: false,
+      user: Users.fromJson({
+        'email': doc.data()!['email'],
+        'phone': doc.data()!['phone'],
+        'interest': doc.data()!['interest'],
+        'username': doc.data()!['username'],
+        'name': doc.data()!['name'],
+        'id': doc.data()!['id'],
+      }),
+    );
   }
 }
 

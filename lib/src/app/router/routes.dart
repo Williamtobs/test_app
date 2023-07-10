@@ -3,8 +3,12 @@ import 'package:chit_vendor/src/screens/auth/login/login_view.dart';
 import 'package:chit_vendor/src/screens/auth/password_reset/new_password.dart';
 import 'package:chit_vendor/src/screens/auth/password_reset/reset_password.dart';
 import 'package:chit_vendor/src/screens/auth/register/register.dart';
+import 'package:chit_vendor/src/screens/dashboard/dashboard.dart';
 import 'package:chit_vendor/src/screens/onboarding/splash_screen.dart';
 import 'package:chit_vendor/src/screens/tabs/home.dart';
+import 'package:chit_vendor/src/screens/tabs/profile/change_password.dart';
+import 'package:chit_vendor/src/screens/tabs/profile/update_email.dart';
+import 'package:chit_vendor/src/screens/tabs/profile/update_username.dart';
 import 'package:flutter/material.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -27,8 +31,16 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const ResetPassword());
       case '/newPassword':
         return MaterialPageRoute(builder: (_) => const NewPassword());
+      case '/dashboard':
+        return MaterialPageRoute(builder: (_) => const Dashboard());
       case '/home':
         return MaterialPageRoute(builder: (_) => const HomePage());
+      case '/changePassword':
+        return MaterialPageRoute(builder: (_) => const ChangePassword());
+      case '/updateEmail':
+        return MaterialPageRoute(builder: (_) => const UpdateEmail());
+      case '/updateUserName':
+        return MaterialPageRoute(builder: (_) => const UpdateUserName());
       // case '/editProfile':
       //   return MaterialPageRoute(builder: (_) => const EditProfile());
       // case '/savedStudio':
