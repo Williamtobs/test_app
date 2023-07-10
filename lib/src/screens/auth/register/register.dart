@@ -312,7 +312,7 @@ class AccountCreated extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         AppButton(
-          text: 'Open email app',
+          text: 'Login',
           active: true,
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(

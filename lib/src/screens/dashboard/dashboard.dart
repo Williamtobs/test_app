@@ -1,5 +1,6 @@
 import 'package:chit_vendor/src/app/constants/color.dart';
 import 'package:chit_vendor/src/screens/tabs/home.dart';
+import 'package:chit_vendor/src/screens/tabs/profile/profile.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -15,7 +16,7 @@ class _DashboardState extends State<Dashboard> {
     const HomePage(),
     Container(color: Colors.blue),
     Container(color: Colors.green),
-    Container(color: Colors.green),
+    const Profile(),
   ];
   @override
   Widget build(BuildContext context) {
